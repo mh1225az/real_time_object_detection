@@ -58,6 +58,21 @@ class Detector:
                     cv2.rectangle(image, (x, y), (x + w, y + h), color=classColor, thickness=1)
                     cv2.putText(image, displayText, (x, y - 10), cv2.FONT_HERSHEY_PLAIN, 1, classColor, 2)
 
+                    lineWidth = min(int(w * 0.3), int(h * 0.3))
+
+                    cv2.line(image, (x,y), (x + lineWidth, y), classColor, thickness= 5)
+                    cv2.line(image, (x,y), (x,y + lineWidth), classColor, thickness= 5)
+
+                    cv2.line(image, (x + w,y), (x + w - lineWidth, y), classColor, thickness= 5)
+                    cv2.line(image, (x + w,y), (x + w,y + lineWidth), classColor, thickness= 5)
+
+
+                    cv2.line(image, (x,y + h), (x + lineWidth, y + h), classColor, thickness= 5)
+                    cv2.line(image, (x,y + h), (x,y + h - lineWidth), classColor, thickness= 5)
+
+                    cv2.line(image, (x + w,y + h), (x + w - lineWidth, y + h), classColor, thickness= 5)
+                    cv2.line(image, (x + w,y + h), (x + w,y + h - lineWidth), classColor, thickness= 5)
+
                 cv2.imshow("result", image)
 
                 key = cv2.waitKey(1) & 0xFF
